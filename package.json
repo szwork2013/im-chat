@@ -11,13 +11,14 @@
     "history": "^1.17.0",
     "jquery": "^2.2.0",
     "koa": "^1.1.2",
+    "koa.io": "0.0.3",
     "lodash": "^4.1.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.1.2",
     "react-router": "^1.0.3",
+    "react-router-redux": "^2.1.0",
     "redux": "^3.1.4",
-    "redux-router": "^0.1.0",
     "socket.io": "^1.4.5"
   },
   "devDependencies": {
@@ -31,17 +32,20 @@
     "babel-preset-stage-1": "^6.3.13",
     "babel-runtime": "^6.3.19",
     "bootstrap-loader": "^1.0.7",
+    "html-loader": "^0.4.0",
     "html-webpack-plugin": "^2.7.2",
     "imports-loader": "^0.6.5",
     "koa-react-view": "^2.0.0",
     "koa-router": "^5.3.0",
     "koa-static": "^2.0.0",
     "koa-views": "^4.0.1",
+    "react-router-proxy-loader": "^0.4.2",
     "resolve-url-loader": "^1.4.3",
     "sass-loader": "^3.1.2",
     "template-html-loader": "0.0.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.12",
+    "webpack-dev-middleware": "^1.5.1",
     "webpack-dev-server": "^1.14.1"
   },
   "main": "init.js",
@@ -49,6 +53,7 @@
     "node": ">=0.12"
   },
   "scripts": {
-    "start": "webpack --progress && node --harmony init.js"
+    "client": "webpack-dev-server --progress",
+    "start": "start webpack --watch --progress && nodemon --harmony init.js"
   }
 }
