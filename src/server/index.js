@@ -14,16 +14,7 @@ var mainServer = require('http').Server(app.callback());
 var io = require('socket.io')(mainServer);
 
 // Socket.io的标准用法
-io.on('connection', function(socket){
-  //socket.emit('news', { hello: 'world' });
-  socket.on('myevent', function(data) {
-    console.log(data);
-    var msgsend = require('./api/msg/msgSend');
-    msgsend(data).then(function(resp){
-      console.log(resp);
-    });
-  });
-});
+io.on('connection', require('./chat'));
 
 
 function* respApi(next){
