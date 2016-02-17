@@ -1,7 +1,9 @@
 
 var { combineReducers } = require('redux');
 var { addReducerPrefix } = require('redux-spliter');
-var asyncReducers = {};
+var asyncReducers = {
+	user:{}
+};
 
 export function registerAsyncReducers(newAsyncReducers, prefix) {
 	if(prefix){
