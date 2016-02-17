@@ -1,8 +1,10 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
+import WeUI from 'react-weui';
+import 'weui';
 import './plus.js';
+import './app.scss'
 
-export default class app extends React.Component {
+export default class App extends React.Component {
 	render() {
         return this.props.children;
     }

@@ -41,8 +41,8 @@ var commonPlugins = [
 commonConfig = {
     resolve: {
         extensions: ['', '.js', '.jsx', '.css', '.scss'],
-        root: [path.join(__dirname, './src/common')]
-    },
+        root: [path.join(__dirname, './src/common'),path.join(__dirname, './src/component')]
+    }
 }
 
 clientConfig = {
@@ -60,11 +60,17 @@ clientConfig = {
         path: distPath,
         filename: '[name].js'
     },
+    postcss:[
+        require('postcss-modules-local-by-default')
+    ],
     module: {
         loaders: commonLoaders.concat([{
             test: /\.css$/,
             loader: "style!css"
-        }, {test: /\.html$/, exclude: /node_modules/, loader: 'html'}])
+        }, {test: /\.html$/, exclude: /node_modules/, loader: 'html'},{
+                test: /\.scss$/,
+                loader: 'style!css?importLoaders=1&localIdentName=[name]_[local]_[hash:base64:4]!postcss!sass?includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./node_modules/compass-mixins/lib")) + '&includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./src/scss"))
+            },])
     },
     plugins: commonPlugins.concat([
         new HtmlWebpackPlugin({

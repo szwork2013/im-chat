@@ -22,6 +22,7 @@ export default class Login extends React.Component {
 				<input type="password" value={this.props.password} onChange={actions.updatePassword}/>
 				<input type="submit" value="提交"/>
 			</form>
+      <Link to="monitor">监测</Link>
 		</div>
 	}
 }
