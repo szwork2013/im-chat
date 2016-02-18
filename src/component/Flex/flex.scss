@@ -1,0 +1,8 @@
+@import "common";
+.cnt{
+	@include flex-container
+}
+
+.itm{
+	@include flex-item(1);
+}

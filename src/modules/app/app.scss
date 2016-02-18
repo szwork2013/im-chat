@@ -1,3 +1,20 @@
-.page, body {
-  background-color: #fbf9fe;
+@import "common";
+
+:global{	
+	.page, body {
+	  background-color: #fbf9fe;
+	}
+
+	.weui_btn_primary{
+		background-color:$blue-bgcolor;
+	}
+
+	.weui_btn_primary:not(.weui_btn_disabled):active{
+		background-color:darken($blue-bgcolor, 10);
+	}
+
+	.green{
+		color:$green-font;
+	}
+
 }

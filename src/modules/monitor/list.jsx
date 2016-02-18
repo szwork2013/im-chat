@@ -1,41 +1,55 @@
-import WeUI from 'react-weui';
+import {Cells, CellsTitle, CellsTips, Cell, CellHeader, CellBody, CellFooter} from 'react-weui';
 import React from 'react';
-import {Link} from 'react-router';
-import Hd from 'Hd';
-const {Cells, CellsTitle, CellsTips, Cell, CellHeader, CellBody, CellFooter} = WeUI;
+import {Hd,HdMiddle} from 'hd';
+import ListItem from './listItem'
+import BottomBar from 'BottomBar'
 
 export default React.createClass({
   render() {
+    const hdpng = require('./../../assets/head.png');
+    const styles = require('./monitor.scss');
+    const {history} = this.props;
+    const toPatientIndex = ()=>{
+      history.push('/me/patient');
+    }
+
+    const commConf = {
+      toPatientIndex:()=>{
+        this.props.history.push('/me/patient');
+      },
+      toDetail:()=>{
+        this.props.history.push('/monitor/detail')
+      }
+    }
+
     return (
       <div>
-      <Hd></Hd>
-        <Cells access>
-          <Cell>
-            <CellBody>
-            个人信息
-            </CellBody>
-            <CellFooter/>
-          </Cell>
-          <Cell>
-            <CellBody>测量时间</CellBody>
-            <CellFooter>昨天</CellFooter>
-          </Cell>
-        </Cells>
+      <Hd>
+        <HdMiddle>监测</HdMiddle>
+      </Hd>
         <Cells>
           <Cell>
-            <CellBody>健康</CellBody>
-            <CellFooter>昨天</CellFooter>
+            <CellBody>
+            <ListItem 
+               head={hdpng} 
+               username='用户1'
+               checked={true} 
+               {...commConf}
+             />
+             </CellBody>
           </Cell>
           <Cell>
-            <CellBody>宫高 腹围</CellBody>
-          </Cell>
-          <Cell>
-            <CellBody>体重 血压</CellBody>
-          </Cell>
-          <Cell>
-            <CellBody>体重 血压</CellBody>
+            <CellBody>
+            <ListItem 
+               head={hdpng} 
+               username='用户2'
+               checked={false} 
+               {...commConf}
+             />
+            </CellBody>
           </Cell>
         </Cells>
+        <BottomBar></BottomBar>
       </div>
     )
   }

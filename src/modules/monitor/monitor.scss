@@ -1,0 +1,63 @@
+@import 'common';
+
+.listitem{
+	@include flex-container
+}
+
+.left{
+}
+
+.right{
+	@include flex-item(1);
+}
+
+.head{
+	float: left;
+	margin:10px;
+}
+
+.monarea{
+	@include activeItem;
+}
+
+.p{
+	line-height: 2;
+}
+
+.name{
+	color:#576B95;
+	font-size:$font-size-big;
+}
+
+.time{
+	font-size:$font-size-big;
+}
+
+.date{
+	color:$grey-font;
+	font-size:$font-size-small;
+	margin:0 4px;
+}
+
+.check{
+	float: right;
+    font-style: normal;
+	font-size:$font-size-normal;
+}
+
+.tobecheck{
+	color:$red-font;
+}
+
+.hascheck{
+	color:$grey-font;
+}
+
+.content{
+	font-size:$font-size-small;
+	background-color:$grey-bgcolor;
+	padding:4px;
+	line-height: 1.5em;
+	border-radius: 3px;
+	@include activeItem;
+}

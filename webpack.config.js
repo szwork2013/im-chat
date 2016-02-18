@@ -69,7 +69,7 @@ clientConfig = {
             loader: "style!css"
         }, {test: /\.html$/, exclude: /node_modules/, loader: 'html'},{
                 test: /\.scss$/,
-                loader: 'style!css?importLoaders=1&localIdentName=[name]_[local]_[hash:base64:4]!postcss!sass?includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./node_modules/compass-mixins/lib")) + '&includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./src/scss"))
+                loader: 'style!css?importLoaders=1&localIdentName=[name]_[local]_[hash:base64:4]!postcss!sass?includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./node_modules/compass-mixins/lib")) + '&includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./src/assets"))
             },])
     },
     plugins: commonPlugins.concat([

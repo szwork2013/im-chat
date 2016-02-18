@@ -1,13 +1,8 @@
-import React from 'react';
+import Hd from './container';
+import HdLeft from './left';
+import HdMiddle from './middle';
+import HdRight from './right';
 
-export default React.createClass({
-  render() {
-    const styles = require('./hd.scss');
-    return (
-      <div>
-        <div className={styles.hd}>{this.props.children}</div>
-        <div className={styles.heightfix}></div>
-      </div>
-    )
-  }
-})
+export {
+	Hd,HdLeft,HdMiddle,HdRight
+}

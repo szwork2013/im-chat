@@ -1,22 +1,13 @@
-
 var { combineReducers } = require('redux');
-var { addReducerPrefix } = require('redux-spliter');
-var asyncReducers = {
-	user:{}
-};
+var { createReducer } = require('redux-spliter');
+import {actionTypes} from 'constant';
+import {routeReducer} from 'react-router-redux';
 
-export function registerAsyncReducers(newAsyncReducers, prefix) {
-	if(prefix){
-		newAsyncReducers = addReducerPrefix(newAsyncReducers, prefix);
-	}
-    asyncReducers = {...asyncReducers, ...newAsyncReducers};
-}
-
-export function getCurrReducers(){
-	return combineReducers(asyncReducers);
-};
-
-export function applyCombineReducer(store, newAsyncReducers, prefix){
-    registerAsyncReducers(newAsyncReducers, prefix);
-    store.replaceReducer(getCurrReducers());
-}
+export default combineReducers({
+	router:routeReducer,
+	user:createReducer({},{
+		[actionTypes.SET_USER_DATA](state,action){
+			return action.payload
+		}
+	})
+})

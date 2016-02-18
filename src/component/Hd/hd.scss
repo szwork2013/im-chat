@@ -1,12 +1,42 @@
+@import "common";
+
+$height:50px;
+
 .hd{
-  height:50px;
+  height:$height;
+  line-height: $height;
   background-color: #37373C;
   position: fixed;
   width: 100%;
   top:0;
   z-index: 10;
+  color:white;
+  @include flex-container;
 }
 
 .heightfix{
-	height: 50px;
+	height: $height;
+}
+
+.left{
+  text-align: left;
+	@include flex-item(1);
+}
+.middle{
+	text-align: center;
+	@include flex-item(1);
+}
+.right{
+  box-sizing: border-box;
+  text-align: right;
+	@include flex-item(1);
+  padding-right:1em;
+}
+
+.arrow{
+  position: relative;
+  &:before{
+    content:' ';    
+    @include arrow($dire:left,$style:pseudo);
+  }
 }

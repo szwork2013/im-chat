@@ -4,8 +4,9 @@ export default React.createClass({
   render() {
     const styles = require('./hd.scss');
     return (
-      <div className={styles.middle}>
-      	{this.props.children}
+      <div>
+        <div className={styles.hd}>{this.props.children}</div>
+        <div className={styles.heightfix}></div>
       </div>
     )
   }

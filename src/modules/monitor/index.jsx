@@ -1,7 +1,14 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as actions from './actions';
 
-export default React.createClass({
+@connect(
+	state=>state,
+	dispatch=>({actions:bindActionCreators(actions,dispatch)})
+)
+export default class Monitor extends React.Component {
   render() {
-    return this.props.children
+    return React.cloneElement(this.props.children, {..._.omit(this.props,'children')});
   }
-})
+}

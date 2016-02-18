@@ -1,0 +1,92 @@
+@import "compass/css3";
+
+$grey-bgcolor:#F3F3F5;
+$grey-bgcolor-active:#ECECEC;
+$blue-bgcolor:#1FB9FF;
+
+$grey-font:#8488A1;
+$red-font:#ED1C24;
+$blue-font:#1FB9FF;
+$green-font:#04BE02;
+
+$font-size-normal:16px;
+$font-size-big:18px;
+$font-size-small:14px;
+$font-size-tiny:12px;
+
+
+//wrap nowrap单行，wrap多行
+@mixin flex-container($wrap:nowrap){
+    @include display-box; //安卓4.2以下，uc
+    @if($wrap == nowrap){
+        @include box-lines(single);
+    }@else{
+        @include box-lines(multiple);
+    }
+
+    display:-ms-flexbox; //ie10+
+    -ms-flex-wrap:$wrap;
+
+    @include display-flex; //最新版本
+    @include flex-wrap($wrap);
+}
+
+
+@mixin flex-item($num:1){
+    @include box-flex($num); //安卓4.2以下，uc
+    @include flex($num);//ie10+
+    -ms-flex:$num;//最新版本
+}
+
+
+@mixin activeItem(){
+	display: block;
+	&:active{
+		background: $grey-bgcolor-active;
+	}
+}
+
+/*
+上下居中的元素 $width宽度
+*/
+@mixin middle($width,$height:$width,$position:absolute){
+    display: block;
+    position: $position;
+    width: $width;
+    height: $height;
+    top: 50%;
+    left: 50%;
+    margin: $height*-0.5 auto auto $width*-0.5;
+}
+
+/*
+css箭头
+$width 宽度
+$color 颜色
+$dire 方向：left,right
+$style 样式： pseudo 伪元素  element 真元素
+*/
+@mixin arrow($width:8px,$color:#ffffff,$dire:right,$style:element){
+    @include transform(rotate(45deg));
+    @if $style == pseudo {
+        display: inline-block;
+        width:$width;
+        height:$width;
+        margin-#{$dire}:$width *1.2;
+    }
+
+    @if $style == element {        
+        @include middle($width);
+    }
+    border:{
+        width: 2px;
+        style: solid;
+        @if $dire == left {
+            color:transparent transparent $color $color;
+        }
+
+        @if $dire == right {
+            color:$color $color transparent transparent;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+@import "common";
+
+.ctn{
+	height:60px;
+	position: fixed;
+	bottom:0;
+	width:100%;
+	border-top:1px solid $grey-bgcolor-active;
+	text-align: center;
+	vertical-align: bottom;
+}
