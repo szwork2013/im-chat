@@ -9,20 +9,20 @@ export default (
     <Route path="/" component={App}>
         <IndexRoute component={Login}/>
         <Route path="monitor" component={require('react-router-proxy-loader!./../modules/monitor')}>
-        	<IndexRoute component={require('react-router-proxy-loader!./../modules/monitor/adapter')}/>
-        	<Route path="list" component={require('react-router-proxy-loader!./../modules/monitor/list')}/>
-        	<Route path="detail" component={require('react-router-proxy-loader!./../modules/monitor/detail')}/>
+        	<IndexRoute component={require('react-router-proxy-loader?name=monitor!./../modules/monitor/adapter')}/>
+        	<Route path="detail" component={require('react-router-proxy-loader?name=monitor!./../modules/monitor/detail')}/>
         </Route>
         <Route path="me" component={require('react-router-proxy-loader!./../modules/me')}>
-          <IndexRoute component={require('react-router-proxy-loader!./../modules/me/oprIndex')}/>
-          <Route path="patient" component={require('react-router-proxy-loader!./../modules/me/patientIndex')}/>
-          <Route path="doctor" component={require('react-router-proxy-loader!./../modules/me/doctorIndex')}/>
+          <IndexRoute component={require('react-router-proxy-loader?name=me!./../modules/me/oprIndex')}/>
+          <Route path="patient" component={require('react-router-proxy-loader?name=me!./../modules/me/patientIndex')}/>
+          <Route path="doctor" component={require('react-router-proxy-loader?name=me!./../modules/me/doctorIndex')}/>
         </Route>
         <Route path="ask" component={require('react-router-proxy-loader!./../modules/ask')}>
-          <Route path="patient" component={NotFound}/>
+          <IndexRoute component={require('react-router-proxy-loader?name=ask!./../modules/ask/adapter')}/>
+          <Route path="one" component={require('react-router-proxy-loader?name=ask!./../modules/ask/one')}/>
         </Route>
         <Route path="address" component={require('react-router-proxy-loader!./../modules/address')}>
-          <IndexRoute component={require('react-router-proxy-loader!./../modules/address/addrList')}/>
+          <IndexRoute component={require('react-router-proxy-loader?name=address!./../modules/address/addrList')}/>
         </Route>
         <Route path="*" component={NotFound}/>
     </Route>

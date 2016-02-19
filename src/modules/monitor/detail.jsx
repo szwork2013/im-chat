@@ -1,8 +1,7 @@
+import React from 'react';
 import {
   Cells, CellsTitle, Cell, CellHeader, CellBody, CellFooter,ButtonArea,Button
 } from 'react-weui';
-import React from 'react';
-import {Link} from 'react-router';
 import {Hd,HdLeft,HdMiddle,HdRight} from 'hd';
 import {routeActions} from 'react-router-redux';
 import {LineChart} from 'react-d3';

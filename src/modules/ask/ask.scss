@@ -1,6 +1,144 @@
 @import 'common';
 
+$height:50px;
+
+@mixin s-grey{
+	font-size:$font-size-small;
+	color:$grey-font;
+}
+
+.item{
+	position: relative;
+	border-top:1px solid $grey-border;
+    padding: 10px 15px;
+    &:active{
+    	background-color:$grey-bgcolor-active;
+    }
+}
+
+.head-wrap{
+	position: absolute;
+	width:$height;
+	height:$height;
+}
+
 .head{
-	float: left;
-	margin:10px;
+	margin-right:10px;
+}
+
+.name{
+	line-height: $height /2 ;
+	font-size:$font-size-normal;
+    padding-left: $height + 10px;
+}
+
+.item+.item{
+	border-bottom: 1px solid $grey-border;
+}
+
+.content{
+	line-height: $height /2 ;
+	@include s-grey;
+	display: inline-block;
+	max-width:100%;
+    box-sizing: border-box;
+    padding-left: $height + 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.time{
+	@include s-grey;
+	float:right;
+}
+
+.chat-wrap{
+	height:100%;
+	box-sizing: border-box;
+	padding:10px 15px;
+	overflow: auto;
+}
+
+.left{
+	width:$height;
+	margin-right:10px;
+}
+
+$arrow-width:6px;
+@mixin arrow-common{	
+	content: " ";
+	position: absolute;
+	top:0.5em;
+	border:{
+		width:$arrow-width;
+		style:solid;
+	}
+}
+.middle{
+	position: relative;
+	background-color:#fff;
+	border:1px solid $grey-border;
+	border-radius: 3px;
+	padding:8px 12px;
+	&:before{
+		@include arrow-common;
+		left:$arrow-width * -2;
+		border:{
+			color:transparent $grey-border transparent transparent;
+		}
+	}
+	&:after{
+		@include arrow-common;
+		left:($arrow-width * -2)+2px;
+		border:{
+			color:transparent $body-bgcolor transparent transparent
+		}
+	}
+	&.self{
+		background-color:$green-bgcolor;
+		&:before{
+			@include arrow-common;
+			left:auto;
+			right:$arrow-width * -2;
+			border:{
+				color:transparent transparent transparent $grey-border
+			}
+		}
+		&:after{
+			@include arrow-common;
+			left:auto;
+			right:($arrow-width * -2)+2px;
+			border:{
+				color:transparent transparent transparent $green-bgcolor
+			}
+		}
+	}
+}
+
+.one{
+	margin:12px 0;
+}
+
+.right{
+	width:$height;
+	margin-left:10px;
+}
+
+.input-area{
+	position: fixed;
+	bottom:0;
+	width:100%;
+	height:$height *0.6;
+	border-top:1px solid $grey-border;
+	text-align: center;
+}
+.input{
+	width:95%;
+	text-indent: 2px;
+	margin-top:2px;
+	line-height: ($height *0.6)-6px;
+	box-sizing: border-box;
+	border:1px solid $grey-border;
+	border-radius: 2px;
 }

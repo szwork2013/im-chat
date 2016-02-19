@@ -24,6 +24,9 @@ function plusReady(){
 	}
 }
 
+
 function init(){
-	render(<Client createHistory={createHashHistory}/>,document.getElementById('app-view'));
+	let appView = document.getElementById('app-view');
+	appView.style.height = window.innerHeight + 'px';
+	render(<Client createHistory={createHashHistory}/>,appView);
 }

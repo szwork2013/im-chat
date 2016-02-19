@@ -1,5 +1,5 @@
-import {Cells, CellsTitle, CellsTips, Cell, CellHeader, CellBody, CellFooter} from 'react-weui';
 import React from 'react';
+import {Cells, CellsTitle, CellsTips, Cell, CellHeader, CellBody, CellFooter} from 'react-weui';
 import {Hd,HdMiddle} from 'hd';
 import BottomBar from 'bottomBar';
 

@@ -1,22 +1,20 @@
-import {Cells, CellsTitle, CellsTips, Cell, CellHeader, CellBody, CellFooter} from 'react-weui';
 import React from 'react';
+import {Cells, CellsTitle, CellsTips, Cell, CellHeader, CellBody, CellFooter} from 'react-weui';
 import {Hd,HdMiddle} from 'hd';
-import BottomBar from 'bottomBar'
+import BottomBar from 'bottomBar';
+import classNames from 'classnames/bind';
 
 let ListItem = (props)=>{
-  const styles = require('./monitor.scss');
+  const styles = require('./ask.scss');
   const cx = classNames.bind(styles);
 
-  return <div className={cx('listitem','flex-container')}>
-      <div className={styles.left}>
-        <img className={styles.head} src={props.head} onClick={props.toPatientIndex}/>
+  return <div className={styles.item} onClick={props.clickHander}>
+      <div className={styles['head-wrap']}>
+        <img className={styles.head} src={props.head}/>
       </div>
-      <div className={cx('right','flex-item-1')}>
-        <h2 className={styles.name} onClick={props.toPatientIndex}>{props.username}</h2>
-        <div className={styles.monarea} onClick={ props.toDetail }>
-          <div className={styles.p}><span className={styles.time}>13:11</span><span className={styles.date}>今天</span><em className={[styles.check,styles.tobecheck].join(' ')}>待阅</em></div>
-          <div className={styles.content}>内容内容内 sdfsdf 容内容sdfsdfsdfsdfsd柘城内容</div>
-        </div>
+      <div className={styles['content-wrap']}>
+        <h2 className={styles.name}>{props.username}<span className={styles.time}>13:11</span></h2>
+        <p className={styles.content}>内容地枯叶要夺枯霜在夺地夺 了最鼍人 的仍人  了工在地 一sdfsdfsd柘城内容</p>
       </div>
     </div>
 }
@@ -24,48 +22,30 @@ let ListItem = (props)=>{
 export default React.createClass({
   render() {
     const hdpng = require('./../../assets/head.png');
-    const styles = require('./monitor.scss');
+    const styles = require('./ask.scss');
     const {history} = this.props;
-    const toPatientIndex = ()=>{
-      history.push('/me/patient');
-    }
 
     const commConf = {
-      toPatientIndex:()=>{
-        this.props.history.push('/me/patient');
-      },
-      toDetail:()=>{
-        this.props.history.push('/monitor/detail')
+      clickHander:()=>{
+        history.push('/ask/one')
       }
     }
 
     return (
       <div>
-      <Hd>
-        <HdMiddle>咨询</HdMiddle>
-      </Hd>
-        <Cells>
-          <Cell>
-            <CellBody>
-            <ListItem 
-               head={hdpng} 
-               username='用户1'
-               checked={true} 
-               {...commConf}
-             />
-             </CellBody>
-          </Cell>
-          <Cell>
-            <CellBody>
-            <ListItem 
-               head={hdpng} 
-               username='用户2'
-               checked={false} 
-               {...commConf}
-             />
-            </CellBody>
-          </Cell>
-        </Cells>
+        <Hd>
+          <HdMiddle>咨询</HdMiddle>
+        </Hd>
+        <ListItem 
+           head={hdpng} 
+           username='用户1'
+           {...commConf}
+         />
+        <ListItem 
+           head={hdpng} 
+           username='用户555'
+           {...commConf}
+         />
         <BottomBar {...this.props}/>
       </div>
     )

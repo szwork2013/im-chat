@@ -17,7 +17,7 @@ export default React.createClass({
         <HdRight>按钮</HdRight>
       </Hd>
         <Cells access>
-          <CellsTips>a</CellsTips>
+          <CellsTitle>a</CellsTitle>
           <Cell onClick={ ()=> this.props.history.push('/me/patient') }>
             <CellHeader>
               <img className={styles.head} src={hdpng}/>
@@ -36,7 +36,7 @@ export default React.createClass({
           </Cell>
         </Cells>
         <Cells access>
-          <CellsTips>b</CellsTips>
+          <CellsTitle>b</CellsTitle>
           <Cell>
             <CellHeader>
               <img className={styles.head} src={hdpng}/>
