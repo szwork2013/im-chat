@@ -1,16 +1,5 @@
 @import 'common';
 
-.listitem{
-	@include flex-container
-}
-
-.left{
-}
-
-.right{
-	@include flex-item(1);
-}
-
 .head{
 	float: left;
 	margin:10px;

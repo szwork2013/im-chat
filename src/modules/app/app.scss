@@ -17,4 +17,19 @@
 		color:$green-font;
 	}
 
+	.flex-container{
+		@include flex-container;
+	}
+
+	@for $i from 1 through 3{
+		.flex-item-#{$i}{
+			@include flex-item($i)
+		}
+	}
+
+	.flex-align-top{
+		@include align-items(flex-start);
+		@include box-align(start);
+	}
+
 }

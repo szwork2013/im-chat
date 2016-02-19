@@ -13,5 +13,17 @@ if(window.plus || __DEV__ ){
 }
 
 function plusReady(){
+	if(__DEV__){
+		try{
+			init();
+		}catch(e){
+			alert(e);
+		}
+	}else{
+		init();
+	}
+}
+
+function init(){
 	render(<Client createHistory={createHashHistory}/>,document.getElementById('app-view'));
 }

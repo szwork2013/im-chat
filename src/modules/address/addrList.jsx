@@ -1,7 +1,7 @@
 import {Cells, CellsTitle, CellsTips, Cell, CellHeader, CellBody, CellFooter} from 'react-weui';
 import React from 'react';
 import {Hd,HdLeft,HdMiddle,HdRight} from 'hd';
-import BottomBar from 'BottomBar'
+import BottomBar from 'bottomBar'
 
 export default React.createClass({
   render() {
@@ -54,7 +54,7 @@ export default React.createClass({
              </CellBody>
           </Cell>
         </Cells>
-        <BottomBar></BottomBar>
+        <BottomBar {...this.props}/>
       </div>
     )
   }

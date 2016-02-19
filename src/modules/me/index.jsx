@@ -7,7 +7,7 @@ import * as actions from './actions';
 	state=>state,
 	dispatch=>({actions:bindActionCreators(actions,dispatch)})
 )
-export default class Monitor extends React.Component {
+export default class Me extends React.Component {
   render() {
     return React.cloneElement(this.props.children, {..._.omit(this.props,'children')});
   }

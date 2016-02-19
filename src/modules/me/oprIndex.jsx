@@ -1,7 +1,7 @@
 import {Cells, Cell, CellBody, CellFooter, CellsTips} from 'react-weui';
 import React from 'react';
 import {Hd,HdLeft,HdMiddle,HdRight} from 'hd';
-import BottomBar from 'BottomBar'
+import BottomBar from 'bottomBar'
 
 export default React.createClass({
   render() {
@@ -41,7 +41,7 @@ export default React.createClass({
           </Cell>
           { dyncHtml }
         </Cells>
-        <BottomBar></BottomBar>
+        <BottomBar {...this.props}/>
       </div>
     )
   }

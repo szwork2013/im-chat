@@ -1,20 +1,20 @@
 import {
   Cells, CellsTitle, Cell, CellHeader, CellBody, CellFooter,ButtonArea,Button
 } from 'react-weui';
-import {
-  FlexContainer,FlexItem
-} from 'Flex'
 import React from 'react';
 import {Link} from 'react-router';
 import {Hd,HdLeft,HdMiddle,HdRight} from 'hd';
 import {routeActions} from 'react-router-redux';
 import {LineChart} from 'react-d3';
+import BottomBar from 'bottomBar'
 
 export default React.createClass({
   toPatientIndex(){
     routeActions.push('/me/patient')
   },
   render() {
+    let {router,user} = this.props;
+
      var lineData = [
       { 
         name: 'series1',
@@ -55,38 +55,32 @@ export default React.createClass({
         <Cells>
           <Cell>
             <CellBody>
-              <FlexContainer>
-                <FlexItem>健康</FlexItem>
-                <FlexItem className='green'>10分</FlexItem>
-                <FlexItem>体重</FlexItem>
-                <FlexItem>50kg</FlexItem>
-              </FlexContainer>
+              <div className="flex-container">
+                <div className="flex-item-1">健康</div>
+                <div className="green flex-item-2">10分</div>
+                <div className="flex-item-1">体重</div>
+                <div className="flex-item-2">50kg</div>
+              </div>
             </CellBody>
           </Cell>
           <Cell>
             <CellBody>
-              <FlexContainer>
-                <FlexItem>宫高</FlexItem>
-                <FlexItem>30cm</FlexItem>
-                <FlexItem>腹围</FlexItem>
-                <FlexItem>90cm</FlexItem>
-              </FlexContainer>
+              <div className="flex-container">
+                <div className="flex-item-1">宫高</div>
+                <div className="flex-item-2">30cm</div>
+                <div className="flex-item-1">腹围</div>
+                <div className="flex-item-2">90cm</div>
+              </div>
             </CellBody>
           </Cell>
           <Cell>
             <CellBody>
-              <FlexContainer>
-                <FlexItem>血压</FlexItem>
-                <FlexItem>80-120</FlexItem>
-              </FlexContainer>
-            </CellBody>
-          </Cell>
-          <Cell>
-            <CellBody>
-              <FlexContainer>
-                <FlexItem>血糖</FlexItem>
-                <FlexItem>4.1 mmol/L</FlexItem>
-              </FlexContainer>
+              <div className="flex-container">
+                <div className="flex-item-1">血压</div>
+                <div className="flex-item-2">80-120</div>
+                <div className="flex-item-1">血糖</div>
+                <div className="flex-item-2">4.1 mmol/L</div>
+              </div>
             </CellBody>
           </Cell>
           <Cell>
@@ -114,6 +108,9 @@ export default React.createClass({
             <Button>发消息</Button>
             <Button type="warn">待阅</Button>
         </ButtonArea>
+        {
+          user.usertype === '1' ? null : <BottomBar {...this.props}/>
+        }
       </div>
     )
   }

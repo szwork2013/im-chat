@@ -23,7 +23,7 @@ export const doctorLogin = ()=>{
                 usertype:'1'
             }
         });
-        dispatch(routeActions.push('/monitor/list'))
+        dispatch(routeActions.push('/monitor'))
     }
 }
 
@@ -32,10 +32,10 @@ export const patientLogin = ()=>{
         dispatch({
             type:actionTypes['SET_USER_DATA'],
             payload:{
-                usertype:'2'
+                usertype:'0'
             }
         });
-        dispatch(routeActions.push('/monitor/detail'))
+        dispatch(routeActions.push('/monitor'))
     }
 }
 
