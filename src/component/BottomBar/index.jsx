@@ -9,11 +9,49 @@ let BarItem = React.createClass({
 		const cx = classNames.bind(styles);
 		const { className,to,text,router } = this.props;
 		return <div 
-			className={cx(className,"flex-item-1",{active:router.location.pathname === to})}
+			className={cx(className,"flex-item-1","fa","item",{active:router.location.pathname === to})}
 			onClick={()=>this.history.pushState(null,to)}
-		>{text}</div>
+		><p>{text}</p></div>
 	}
 })
+
+let tuple = {
+	['/ask']:{
+		usertype:"all",
+		text:"咨询",
+		className:"fa-commenting-o"
+	},
+	['/address']:{
+		usertype:"1",
+		text:"通讯录",
+		className:"fa-industry"
+	},
+	['/record']:{
+		usertype:"0",
+		text:"记录",
+		className:"fa-area-chart"
+	},
+	['/monitor']:{
+		usertype:"all",
+		text:"监测",
+		className:"fa-compass"
+	},
+	['/me']:{
+		usertype:"all",
+		text:"我",
+		className:"fa-user"
+	}
+}
+
+export function rootName(router){
+	let {location:{pathname}} = router;
+	let arr = pathname.match(/(\/\w+)/g);
+	if(arr.length >=2){
+		return tuple[arr[0]].text;
+	}else{
+		return '';
+	}
+}
 
 export default React.createClass({
 	render(){
@@ -21,18 +59,17 @@ export default React.createClass({
 		const cx = classNames.bind(styles);
 		const {router,user} = this.props;
 
-		let html = null;
-		if(user.usertype==='1'){
-			html = <BarItem to="/address" text="通讯录" router={router}/>
-		}else{
-			html = <BarItem to="/record" text="记录" router={router}/>
-		}
+		let keys = Object.keys(tuple);
 		return (
-			<div className={cx('ctn','flex-container')}>
-				<BarItem to="/ask" text="咨询" router={router}/>
-				{html}
-				<BarItem to="/monitor" text="监测" router={router}/>
-				<BarItem to="/me" text="我" router={router}/>
+			<div className={styles.fix}>
+				<div className={cx('ctn','flex-container')}>
+					{
+						keys.map(key=>{
+							let conf = {key,to:key,router,...tuple[key]};
+							return  (conf.usertype === user.usertype || conf.usertype === 'all') ? <BarItem {...conf}/> : null;
+						},this)
+					}
+				</div>
 			</div>
 		)
 	}

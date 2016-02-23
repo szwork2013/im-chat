@@ -8,6 +8,20 @@
 	border-top:1px solid $grey-bgcolor-active;
 	text-align: center;
 	vertical-align: bottom;
+	background-color: $grey-bgcolor;
+}
+
+.fix{
+	height: 60px;
+}
+
+.item{
+    padding-top: 10px;
+	font-size:30px;
+	>p{
+		font-size: 14px;
+    	line-height: 1.5;
+	}
 }
 
 .active{

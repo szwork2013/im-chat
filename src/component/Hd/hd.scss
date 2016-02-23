@@ -27,16 +27,21 @@ $height:50px;
 	@include flex-item(1);
 }
 .right{
-  box-sizing: border-box;
   text-align: right;
 	@include flex-item(1);
-  padding-right:1em;
+}
+
+.indent{
+  &:after{
+    content:'';
+    margin-right:6px;
+  }
 }
 
 .arrow{
   position: relative;
   &:before{
-    content:' ';    
+    content:'';    
     @include arrow($dire:left,$style:pseudo);
   }
 }

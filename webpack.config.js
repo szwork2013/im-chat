@@ -8,6 +8,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var commonConfig, clientConfig, serverConfig;
 var distPath = path.join(__dirname,'dist/public');
+var production = process.argv.indexOf('-p') > -1 ;
 
 var commonLoaders = [{
     test: /\.jsx?$/,
@@ -15,7 +16,10 @@ var commonLoaders = [{
     loader: "babel"
 }, {
     test: /\.(png|jpe?g|gif)$/,
-    loader: 'url?limit=800&name=images/[name].[hash:4].[ext]'
+    loader: 'url?limit=800&name=asset/[name].[hash:4].[ext]'
+},{
+    test:/\.(ttf|eot|svg|woff2?)/,
+    loader : 'file?name=asset/[name].[hash:4].[ext]'
 }];
 
 var commonPlugins = [
@@ -30,10 +34,10 @@ var commonPlugins = [
     }),
     //定义自由变量 development production
     new webpack.DefinePlugin({
-        __DEV__: true,
+        __DEV__: !production,
         __VERSION__: JSON.stringify(pack.version),
         'process.env': {
-            NODE_ENV: JSON.stringify('development')
+            NODE_ENV: JSON.stringify(production ? 'production' : 'development')
         }
     })
 ];
@@ -68,9 +72,9 @@ clientConfig = {
             test: /\.css$/,
             loader: "style!css"
         }, {test: /\.html$/, exclude: /node_modules/, loader: 'html'},{
-                test: /\.scss$/,
-                loader: 'style!css?importLoaders=1&localIdentName=[name]_[local]_[hash:base64:4]!postcss!sass?includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./node_modules/compass-mixins/lib")) + '&includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./src/assets"))
-            },])
+            test: /\.scss$/,
+            loader: 'style!css?importLoaders=1&localIdentName=[name]_[local]_[hash:base64:4]!postcss!sass?includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./node_modules/compass-mixins/lib")) + '&includePaths[]=' + encodeURIComponent(path.resolve(__dirname, "./src/assets"))
+        }])
     },
     plugins: commonPlugins.concat([
         new HtmlWebpackPlugin({
@@ -108,5 +112,4 @@ serverConfig = _.extend({},commonConfig,serverConfig);
 // }else{
 //     module.exports = [clientConfig,serverConfig];
 // }
-
 module.exports = clientConfig;

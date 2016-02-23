@@ -1,8 +1,8 @@
 import React from 'react';
 import List from './list';
+import One from './one'
 
 export default (props)=>{
 	const p = _.omit(props,'children');
-	//return [<Detail {...p}/>,<List {...p}/>][p.user.usertype];
-	return <List {...p}/>;
+	return [<One {...p}/>,<List {...p}/>][p.user.usertype];
 }

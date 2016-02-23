@@ -5,14 +5,15 @@ import {
 import {Hd,HdLeft,HdMiddle,HdRight} from 'hd';
 import {routeActions} from 'react-router-redux';
 import {LineChart} from 'react-d3';
-import BottomBar from 'bottomBar'
+import BottomBar,{rootName} from 'bottomBar'
 
 export default React.createClass({
   toPatientIndex(){
     routeActions.push('/me/patient')
   },
   render() {
-    let {router,user} = this.props;
+    let {router,user,history} = this.props;
+    let isDr = user.usertype === '1';
 
      var lineData = [
       { 
@@ -32,21 +33,30 @@ export default React.createClass({
       } 
     ];
 
+    const backtext = rootName(router);
+
     return (
       <div>
       <Hd>
-        <HdLeft>返回</HdLeft>
+        <HdLeft arrow={backtext}>{backtext}</HdLeft>
         <HdMiddle>用户名</HdMiddle>
         <HdRight>帐号</HdRight>
       </Hd>
         <Cells access>
-          <Cell>
-            <CellBody onClick={this.toPatientIndex}>
+        {
+          isDr ? <Cell onClick={this.toPatientIndex}>
+            <CellBody>
             个人信息
             </CellBody>
             <CellFooter/>
+          </Cell> : <Cell onClick={()=>history.pushState(null,'/monitor/body')}>
+            <CellBody>
+            身体数据
+            </CellBody>
+            <CellFooter/>
           </Cell>
-          <Cell>
+        }
+          <Cell className="no_access">
             <CellBody>测量时间</CellBody>
             <CellFooter>昨天</CellFooter>
           </Cell>
@@ -105,10 +115,10 @@ export default React.createClass({
         </Cells>
         <ButtonArea direction="horizontal">
             <Button>发消息</Button>
-            <Button type="warn">待阅</Button>
+            { isDr ? <Button type="warn">待阅</Button> : null }
         </ButtonArea>
         {
-          user.usertype === '1' ? null : <BottomBar {...this.props}/>
+          isDr ? null : <BottomBar {...this.props}/>
         }
       </div>
     )

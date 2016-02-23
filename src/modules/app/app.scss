@@ -5,12 +5,21 @@
 	  background-color: $body-bgcolor;
 	}
 
+//weui fixed
 	.weui_btn_primary{
 		background-color:$blue-bgcolor;
 	}
 
 	.weui_btn_primary:not(.weui_btn_disabled):active{
 		background-color:darken($blue-bgcolor, 10);
+	}
+
+	.weui_cell.no_access{
+		.weui_cell_ft {
+			&:after{
+				content:none;
+			}
+		}
 	}
 
 	.green{
@@ -30,6 +39,13 @@
 	.flex-align-top{
 		@include align-items(flex-start);
 		@include box-align(start);
+	}
+
+	.right-font-ico{
+		display: inline-block;
+		line-height: 50px;
+		width:50px;
+		text-align: center;
 	}
 
 }

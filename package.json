@@ -8,6 +8,7 @@
     "bootstrap-sass": "^3.3.6",
     "es6-promise": "^3.0.2",
     "fastclick": "^1.0.6",
+    "font-awesome": "^4.5.0",
     "history": "^1.17.0",
     "jquery": "^2.2.0",
     "koa": "^1.1.2",
@@ -69,6 +70,7 @@
     "node": ">=0.12"
   },
   "scripts": {
+    "build": "webpack --progress -p",
     "client": "webpack-dev-server --progress --content-base dist/public/",
     "start": "start webpack --watch --progress && nodemon --harmony init.js"
   }

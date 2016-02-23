@@ -14,7 +14,7 @@ export default React.createClass({
       <Hd>
         <HdLeft arrow={false}></HdLeft>
         <HdMiddle>通讯录</HdMiddle>
-        <HdRight>按钮</HdRight>
+        <HdRight><span className="right-font-ico fa fa-gear fa-2x"></span></HdRight>
       </Hd>
         <Cells access>
           <CellsTitle>a</CellsTitle>

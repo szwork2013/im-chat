@@ -1,6 +1,7 @@
 //var socket = io();
 import {actionTypes} from 'constant';
-import {routeActions} from 'react-router-redux'
+import {routeActions} from 'react-router-redux';
+import router from './../../routers/router';
 
 export const doLogin = (e) => {
     e.preventDefault();
@@ -23,6 +24,10 @@ export const doctorLogin = ()=>{
                 usertype:'1'
             }
         });
+        dispatch({
+            type:actionTypes.ROUTE_SET,
+            payload:router
+        })
         dispatch(routeActions.push('/monitor'))
     }
 }

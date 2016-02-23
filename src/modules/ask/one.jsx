@@ -1,6 +1,6 @@
 import React from 'react';
 import {Hd,HdLeft,HdMiddle,HdRight} from 'hd';
-import BottomBar from 'bottomBar'
+import BottomBar,{rootName} from 'bottomBar'
 import classNames from 'classnames/bind';
 
 let ChatOne = (props)=>{
@@ -22,9 +22,10 @@ let ChatOne = (props)=>{
 
 export default React.createClass({
 	render(){
-
+	const {router} = this.props;
 	const styles = require('./ask.scss');
 	const cx = classNames.bind(styles);
+	const backtext = rootName(router);
 
 	const hdpng = require('./../../assets/head.png');
 	const hdpng2 = require('./../../assets/head2.png');
@@ -32,7 +33,7 @@ export default React.createClass({
 		return (
 			<div>
 				<Hd>
-			        <HdLeft>返回</HdLeft>
+			        <HdLeft arrow={backtext}>{backtext}</HdLeft>
 			        <HdMiddle>用户名</HdMiddle>
 			        <HdRight>图标</HdRight>
 		      	</Hd>

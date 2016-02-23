@@ -6,9 +6,14 @@ import {routeReducer} from 'react-router-redux';
 export default combineReducers({
 	router:routeReducer,
 	user:createReducer({
-		usertype:'1' // 1医生  0患者
+		usertype:'0' // 1医生  0患者
 	},{
 		[actionTypes.SET_USER_DATA](state,action){
+			return action.payload
+		}
+	}),
+	myrouter:createReducer({},{
+		[actionTypes.ROUTE_SET](state,action){
 			return action.payload
 		}
 	})
