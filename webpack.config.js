@@ -51,6 +51,7 @@ commonConfig = {
 
 clientConfig = {
     devServer:{
+      contentBase:distPath,
       port:port,
       host:'0.0.0.0'
     },

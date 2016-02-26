@@ -18,10 +18,32 @@ io.on('connection', require('./chat'));
 
 
 function* respApi(next){
-	this.body = 'api work!'
+	'use strict';
+	var expr = require('./api/expr/expr');
+
+	let query = this.request.query;
+	let m = query.m || 'qry';
+
+	let param = {
+		value:'1',
+		'in_credit':444,
+		'dt_birth':new Date,
+		'dttm_created':new Date,
+		'am_m_bs':5.32,
+		'bl_read':1,
+	};
+
+	let tuple = {
+		del:2,
+		qry:1,
+		ins:param,
+		upd:Object.assign({id:3},param)
+	}
+	this.body = yield expr[m](tuple[m]);
+
 }
 
-router.get('/api',respApi);
+router.get('/api/expr',respApi);
 router.post('/api',respApi);
 
 //todo:暂时先静态地输出客户端，服务端只处理ws和api的请求，后期再添加服务端渲染的内容。

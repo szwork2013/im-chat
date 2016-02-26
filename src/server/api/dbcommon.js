@@ -1,5 +1,6 @@
 var mysql      = require('mysql');
 var mysqlConfig = {
+  dateStrings     : true,
   host     : 'localhost',
   user     : 'root',
   password : '',
@@ -12,10 +13,11 @@ module.exports = function doSql(prepareParamFn){
 	return function(param){
 		var connection = mysql.createConnection(mysqlConfig);
 		connection.connect();
+
 		var retVal = new Promise(function(resolve,reject){
 			var preparedParam = prepareParamFn(param)
 			connection.query(preparedParam,function(err,data){
-				// console.log(preparedParam);
+				console.log(preparedParam);
 				if(err){
 					reject(err);
 				}else{
